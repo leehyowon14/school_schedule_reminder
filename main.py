@@ -5,8 +5,7 @@ from datetime import datetime
 import json
 with open('./config/schedule.json', "r", encoding='UTF8') as f:
     schedule_dict = json.load(f)
-
-print(schedule_dict)
+    
 
 schedule_time  = schedule_dict["time"]
 
@@ -27,8 +26,8 @@ Class = 1
 for key in schedule_time:
     schedule.every().day.at(schedule_time[key]).do(reminder, subject_dict[str(Class)])
     Class += 1
-    print(Class)
-    print(schedule_time[key])
+
+print("리마인더가 실행되었습니다.")
 
 while True:
     schedule.run_pending()
